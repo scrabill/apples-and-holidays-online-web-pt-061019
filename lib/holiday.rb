@@ -122,7 +122,7 @@ def all_holidays_with_bbq(holiday_hash)
 
   holiday_hash.each do |season,holiday|
     holiday_hash[season].each do |holiday,supplies|
-      if supplies.any?("BBQ") == true # This also works with include? .flatten .compact
+      if supplies.any?("BBQ") == true # This also works with include? Look into this >> .flatten .compact
       new_array << holiday
       end
     end
