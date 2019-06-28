@@ -80,13 +80,15 @@ add_new_holiday_with_supplies(holiday_hash, :winter, :kwanza, ["candles"]) # Add
 
 def all_winter_holiday_supplies(holiday_hash)
   # return an array of all of the supplies that are used in the winter season
-  new_array = []
-  
-  holiday_hash[:winter].each do |holiday_key, supply_array|
-    new_array << supply_array
-  end
+  # new_array = []
+  #
+  # holiday_hash[:winter].each do |holiday_key, supply_array|
+  #   new_array << supply_array
+  # end
+  #
+  # new_array.flatten
+holiday_hash[:winter].values
 
-  new_array.flatten
 end
 
 def all_supplies_in_holidays(holiday_hash)
