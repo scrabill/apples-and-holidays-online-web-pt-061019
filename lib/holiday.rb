@@ -1,5 +1,21 @@
 require 'pry'
 
+holiday_hash = {
+  :winter => {
+    :christmas => ["Lights", "Wreath"],
+    :new_years => ["Party Hats"]
+  },
+  :summer => {
+    :fourth_of_july => ["Fireworks", "BBQ"]
+  },
+  :fall => {
+    :thanksgiving => ["Turkey"]
+  },
+  :spring => {
+    :memorial_day => ["BBQ"]
+  }
+}
+
 def second_supply_for_fourth_of_july(holiday_hash)
   # given that holiday_hash looks like this:
   # {
@@ -33,9 +49,12 @@ def add_supply_to_winter_holidays(holiday_hash, supply)
   #   end
   # end
 
-  holiday_hash[:winter][:christmas] << supply
-  holiday_hash[:winter][:new_years] << supply
+  # holiday_hash[:winter][:christmas] << supply # This works too, but lets refactor it!
+  # holiday_hash[:winter][:new_years] << supply
 
+  holiday_hash[:winter].each do |holiday,array| # The code is now more reusable for future use cases!
+    array << supply
+  end
 end
 
 
@@ -57,16 +76,20 @@ def add_new_holiday_with_supplies(holiday_hash, season, holiday_name, supply_arr
 
 end
 
+add_new_holiday_with_supplies(holiday_hash, :winter, :kwanza, ["candles"]) # Adds new holiday
+
 def all_winter_holiday_supplies(holiday_hash)
   # return an array of all of the supplies that are used in the winter season
-  new_array = []
+  # new_array = []
+  #
+  # holiday_hash[:winter].each do |holiday_key, supply_array|
+  #   new_array << supply_array
+  # end
+  #
+  # new_array.flatten
 
+  holiday_hash[:winter].values.flatten # One line!
 
-  holiday_hash[:winter].each do |holiday_key, supply_array|
-    new_array << supply_array
-  end
-
-  new_array.flatten
 end
 
 def all_supplies_in_holidays(holiday_hash)
@@ -99,7 +122,7 @@ def all_holidays_with_bbq(holiday_hash)
 
   holiday_hash.each do |season,holiday|
     holiday_hash[season].each do |holiday,supplies|
-      if supplies.any?("BBQ") == true
+      if supplies.any?("BBQ") == true # This also works with include? Look into this >> .flatten .compact
       new_array << holiday
       end
     end
