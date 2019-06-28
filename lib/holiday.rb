@@ -87,7 +87,7 @@ def all_winter_holiday_supplies(holiday_hash)
   # end
   #
   # new_array.flatten
-holiday_hash[:winter].values.flatten
+holiday_hash[:winter].values.flatten # One line!
 
 end
 
