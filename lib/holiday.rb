@@ -36,7 +36,7 @@ def add_supply_to_winter_holidays(holiday_hash, supply)
   # holiday_hash[:winter][:christmas] << supply # This works too, but lets refactor it!
   # holiday_hash[:winter][:new_years] << supply
 
-  holiday_hash[:winter].each do |holiday,array| # The code is now more reusable!
+  holiday_hash[:winter].each do |holiday,array| # The code is now more reusable for future use cases!
     array << supply
   end
 end
